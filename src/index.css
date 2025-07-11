@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "aos/dist/aos.css";
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slideDown {
+  animation: slideDown 0.8s ease-out;
+}
