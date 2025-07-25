@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import imagem1 from "/src/assets/produtos/imagem1.png";
 import imagem2 from "/src/assets/produtos/imagem2.png";
 
+
+
 const produtos = [
   {
     nome: "Chocolatudo",
@@ -40,7 +42,7 @@ const ProdutosCarousel = () => {
   }, []);
 
   return (
-    <section className="grid place-items-center text-center py-12 bg-gradient-to-r from-[#7f4a21] to-[#c28a5c] text-white rounded-lg shadow-md">
+    <section className="flex flex-col items-center text-center py-12 bg-gradient-to-r from-[#7f4a21] to-[#c28a5c] text-white rounded-lg shadow-md">
       <motion.h1
         className="text-4xl font-bold tracking-wide"
         initial={{ opacity: 0, y: -20 }}
@@ -104,29 +106,6 @@ const ProdutosCarousel = () => {
             </motion.p>
           </motion.div>
         </div>
-
-        {/* Controles do Slider */}
-<motion.button
-  type="button"
-  onClick={prevSlide}
-  className="absolute top-1/2 left-8 transform -translate-y-1/2 z-50 flex items-center justify-center h-14 w-14 rounded-full bg-gradient-to-br from-[#5e3921] to-[#c28a5c] shadow-lg backdrop-blur-sm hover:shadow-xl hover:brightness-125 transition-all duration-300"
-  whileHover={{ scale: 1.3 }}
->
-  <svg className="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-  </svg>
-</motion.button>
-
-<motion.button
-  type="button"
-  onClick={nextSlide}
-  className="absolute top-1/2 right-8 transform -translate-y-1/2 z-50 flex items-center justify-center h-14 w-14 rounded-full bg-gradient-to-br from-[#5e3921] to-[#c28a5c] shadow-lg backdrop-blur-sm hover:shadow-xl hover:brightness-125 transition-all duration-300"
-  whileHover={{ scale: 1.3 }}
->
-  <svg className="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
-  </svg>
-</motion.button>
       </div>
 
       {/* Dots de navegação */}
