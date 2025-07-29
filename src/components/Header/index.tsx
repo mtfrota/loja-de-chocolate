@@ -68,13 +68,14 @@ const Header = () => {
         <motion.img
           src={logo}
           alt="Logo Chocoaçu"
-          className="w-32 object-contain cursor-pointer"
+          className="w-32 object-contain cursor-pointer hidden md:block"
           whileHover={{ scale: 1.1 }}
           onClick={() => handleScroll("Início")}
         />
-
+        
         <HeaderDesktop activeSection={activeSection} handleScroll={handleScroll} />
         <HeaderMobile handleScroll={handleScroll} />
+        
       </div>
     </motion.header>
   );
