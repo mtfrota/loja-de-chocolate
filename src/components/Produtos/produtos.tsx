@@ -30,10 +30,6 @@ const ProdutosCarousel = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % produtos.length);
   };
 
-  const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + produtos.length) % produtos.length);
-  };
-
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();

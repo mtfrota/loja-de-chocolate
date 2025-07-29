@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBox, faTruck, faUser } from "@fortawesome/free-solid-svg-icons";
+import {faBars,faBox,faTruck,faUser,} from "@fortawesome/free-solid-svg-icons";
 import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
@@ -42,23 +41,27 @@ const SocialLinks = () => (
   </div>
 );
 
-const HeaderMobile = ({ handleScroll }: { handleScroll: (id: string) => void }) => {
+const HeaderMobile = ({
+  handleScroll,
+}: {
+  handleScroll: (id: string) => void;
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const buttonClasses = "flex items-center gap-2 px-4 py-2 rounded font-medium bg-[#5e0b15] text-white hover:bg-[#3d2b1f] transition duration-200";
+  const buttonClasses =
+    "flex items-center gap-2 px-4 py-2 rounded font-medium bg-[#5e0b15] text-white hover:bg-[#3d2b1f] transition duration-200";
 
   const renderMenuItems = () =>
     menuItems.map(({ name, icon }) => (
       <motion.button
         key={name}
         onClick={() => {
-          handleScroll(name); // Corrigido: cada botão chama sua seção
+          handleScroll(normalizeId(name)); // Aplicado normalizeId para gerar IDs consistentes
           setMenuOpen(false);
         }}
         whileTap={{ scale: 0.95 }}
         whileHover={{ scale: 1.05 }}
         className={buttonClasses}
-        role="link"
         aria-label={`Ir para ${name}`}
       >
         <FontAwesomeIcon icon={icon} /> {name}
@@ -73,10 +76,9 @@ const HeaderMobile = ({ handleScroll }: { handleScroll: (id: string) => void }) 
         aria-label="Abrir menu"
         aria-expanded={menuOpen}
         aria-haspopup="true"
-        >
-  <FontAwesomeIcon icon={faBars} size="lg" />
-</button>
-
+      >
+        <FontAwesomeIcon icon={faBars} size="lg" />
+      </button>
 
       <AnimatePresence>
         {menuOpen && (
