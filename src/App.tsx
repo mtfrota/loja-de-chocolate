@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useEffect } from "react";
 import Typewriter from "typewriter-effect";
 
 import Footer from "./components/Footer";
@@ -21,7 +21,7 @@ const App = () => {
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#9e6d4e] to-[#c28a5c]">
       {/* Cabeçalho */}
       <Header data-aos="fade-down" />
-        <div className="h-[222px] md:h-[100px]" />
+        <div className="h-[222px] md:h-[100px]" />  {/*gambierra */}
       {/* Texto animado com Typewriter */}
       <div className="text-white text-lg font-bold flex justify-center items-center mt-6">
         <Typewriter

@@ -74,7 +74,7 @@ const Header = () => {
         />
         
         <HeaderDesktop activeSection={activeSection} handleScroll={handleScroll} />
-        <HeaderMobile handleScroll={handleScroll} />
+        <HeaderMobile />
         
       </div>
     </motion.header>
