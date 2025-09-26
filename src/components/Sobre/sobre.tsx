@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import cartoon1 from "../../assets/claudia/cartoon1.jpg";
+import cartoon1 from "../../assets/claudia/cartoon1.png";
 import cartoon2 from "../../assets/claudia/cartoon2.png";
 
 const Sobre = () => {
@@ -72,6 +72,7 @@ const Sobre = () => {
       {/* Imagens ilustrativas com ajustes de escala */}
       <div className="flex justify-center mt-8 gap-8">
         <motion.img
+          loading="lazy"
           className="rounded-full w-44 h-44 object-cover shadow-lg"
           src={cartoon1}
           alt="Chocolate artesanal da CHOCOAÇU_CHOCOLATE CIA"
@@ -81,6 +82,7 @@ const Sobre = () => {
           whileHover={{ scale: 1.2, rotate: 6 }} // Ajustado para evitar distorção
         />
         <motion.img
+          loading="lazy"
           className="rounded-full w-44 h-44 object-cover shadow-lg"
           src={cartoon2}
           alt="Chocolate artesanal da CHOCOAÇU_CHOCOLATE CIA"

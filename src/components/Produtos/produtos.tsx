@@ -71,6 +71,7 @@ const ProdutosCarousel = () => {
             {/* Imagem com efeito de zoom e hover com detalhes */}
             <motion.div className="relative w-[90%] h-auto md:w-[600px] md:h-[350px] lg:w-[700px] lg:h-[400px]">
               <motion.img
+                loading="lazy"
                 src={produtos[activeIndex].imagem}
                 className="w-full h-full object-cover rounded-lg shadow-md"
                 alt={`Imagem do produto ${produtos[activeIndex].nome}`}

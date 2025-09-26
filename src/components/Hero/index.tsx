@@ -23,6 +23,7 @@ const Hero = () => {
             <div className="absolute inset-0 w-full h-full overflow-hidden">
                 <AnimatePresence mode="wait">
                     <motion.img
+                        loading="lazy"
                         src={imagens[activeIndex]}
                         className="absolute w-full h-full object-cover"
                         initial={{ opacity: 0, scale: 1.05 }}

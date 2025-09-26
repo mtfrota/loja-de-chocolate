@@ -66,6 +66,7 @@ const Header = () => {
     >
       <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3">
         <motion.img
+          loading="lazy"
           src={logo}
           alt="Logo Chocoaçu"
           className="w-32 object-contain cursor-pointer hidden md:block"
