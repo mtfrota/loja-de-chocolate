@@ -1,29 +1,19 @@
 import { motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderMobile from "./HeaderMobile";
 import HeaderDesktop from "./HeaderDesktop";
 import logo from "../../assets/Logo.png";
 
-const normalizeId = (str: string) =>
-  str
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, "-");
+// NOVO: Define o tipo das props que o Header vai receber
+type HeaderProps = {
+  handleScroll: (sectionId: string) => void;
+};
 
-const Header = () => {
+// MUDANÇA: Aplica o tipo às props
+const Header = ({ handleScroll }: HeaderProps) => {
   const [activeSection, setActiveSection] = useState("");
   const [userHasScrolled, setUserHasScrolled] = useState(false);
 
-  const handleScroll = useCallback((item: string) => {
-    const id = normalizeId(item);
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
-
-  // Detecta quando o usuário começa a rolar
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 100) setUserHasScrolled(true);
@@ -32,11 +22,9 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ScrollSpy ativo após rolagem
   useEffect(() => {
     if (!userHasScrolled) return;
-
-    const sectionIds = ["quem-somos", "produtos", "encomende-ja"];
+    const sectionIds = ["quem-somos", "produtos"];
     const observer = new IntersectionObserver(
       (entries) => {
         for (let entry of entries) {
@@ -48,12 +36,10 @@ const Header = () => {
       },
       { rootMargin: "-40% 0px -55% 0px" }
     );
-
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, [userHasScrolled]);
 
@@ -65,18 +51,15 @@ const Header = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3">
-        <motion.img
-          loading="lazy"
-          src={logo}
-          alt="Logo Chocoaçu"
-          className="w-32 object-contain cursor-pointer hidden md:block"
-          whileHover={{ scale: 1.1 }}
-          onClick={() => handleScroll("Início")}
+        <a href="#" onClick={() => handleScroll("inicio")}>
+          <motion.img src={logo} alt="Logo Chocoaçu" className="w-32 object-contain cursor-pointer hidden md:block" whileHover={{ scale: 1.1 }} />
+        </a>
+        <HeaderDesktop
+          activeSection={activeSection}
+          handleScroll={handleScroll}
+          userHasScrolled={userHasScrolled}
         />
-        
-        <HeaderDesktop activeSection={activeSection} handleScroll={handleScroll} />
-        <HeaderMobile />
-        
+        <HeaderMobile handleScroll={handleScroll} />
       </div>
     </motion.header>
   );
