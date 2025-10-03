@@ -59,7 +59,7 @@ const Header = ({ handleScroll }: HeaderProps) => {
           handleScroll={handleScroll}
           userHasScrolled={userHasScrolled}
         />
-        <HeaderMobile handleScroll={handleScroll} />
+        <HeaderMobile/>
       </div>
     </motion.header>
   );

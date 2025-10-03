@@ -1,10 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
-// Lista de links úteis para a navegação
 const footerLinks = ["Início", "Produtos", "Quem Somos"];
 
-const Footer = ({ className, handleScroll }) => {
+// NOVO: Definimos o tipo das props que o Footer espera receber
+type FooterProps = {
+  className?: string; // className é uma string opcional
+  handleScroll: (sectionId: string) => void; // handleScroll é uma função
+};
+
+// MUDANÇA: Aplicamos o tipo ao componente
+const Footer = ({ className, handleScroll }: FooterProps) => {
   return (
     <footer className={`bg-[#41160d] m-4 rounded-lg shadow-sm ${className}`}>
       <div className="w-full mx-auto max-w-screen-xl p-4 flex flex-col md:flex-row gap-6 items-center justify-between">
